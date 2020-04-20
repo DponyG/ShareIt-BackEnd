@@ -19,10 +19,10 @@ public class QueryService {
 		return em.find(Account.class, id);
 	}
 	
-	public boolean authenticateAccount(String email, String plainTextPassword) {
+	public boolean authenticateAccount(String accountName, String plainTextPassword) {
 
         Account account = em.createNamedQuery(Account.FIND_USER_BY_CREDENTIALS, Account.class)
-                .setParameter("email", email.toLowerCase()).getResultList().get(0);
+                .setParameter("accountName", accountName.toLowerCase()).getResultList().get(0);
 
         if (account != null) {
             return securityUtil.passwordsMatch(account.getPassword(), account.getSalt(), plainTextPassword);

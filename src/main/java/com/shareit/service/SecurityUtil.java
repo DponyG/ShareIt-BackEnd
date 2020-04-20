@@ -34,14 +34,11 @@ public class SecurityUtil {
 //    }
 
     public Key generateKey(String keyString) {
-
-
          return new SecretKeySpec(keyString.getBytes(), 0, keyString.getBytes().length, "DES");
-
     }
 
-    public boolean authenticateAccount(String email, String password) {
-        return queryService.authenticateAccount(email, password);
+    public boolean authenticateAccount(String accountName, String password) {
+        return queryService.authenticateAccount(accountName, password);
 
     }
 

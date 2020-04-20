@@ -22,18 +22,18 @@ public class PersistenceService {
 	
 	public void saveAccount() {
 		Account account = new Account();
-		account.setAccountName("Test");
-//		Map<String, String>credMap = securityUtil.hashPassword(account.getPassword());
-//		account.setPassword(credMap.get("hashedPassword"));
-//		account.setSalt(credMap.get("salt"));
-//		if(account.getId() == null) {
-//			em.persist(account);
-//		}
-//		else {
-//			em.merge(account);
-//		}
-//		credMap = null;
-//		em.persis
+		account.setAccountName("Test123");
+		account.setPassword("bob21185123");
+		Map<String, String>credMap = securityUtil.hashPassword(account.getPassword());
+		account.setPassword(credMap.get("hashedPassword"));
+		account.setSalt(credMap.get("salt"));
+		if(account.getId() == null) {
+			em.persist(account);
+		}
+		else {
+			em.merge(account);
+		}
+		credMap = null;
 		em.persist(account);
 	}
 

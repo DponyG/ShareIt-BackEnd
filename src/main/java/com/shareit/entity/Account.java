@@ -17,7 +17,7 @@ import javax.ws.rs.FormParam;
 
 @Entity
 @NamedQuery(name = Account.FIND_ALL, query = "select u from Account u")
-@NamedQuery(name = Account.FIND_USER_BY_CREDENTIALS, query = "select u from Account  u where  u.email = :email")
+@NamedQuery(name = Account.FIND_USER_BY_CREDENTIALS, query = "select u from Account u where u.accountName = :accountName")
 public class Account {
 
 	public static final String FIND_ALL = "Account.findAll";
