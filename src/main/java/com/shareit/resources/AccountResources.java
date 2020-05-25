@@ -66,33 +66,35 @@ public class AccountResources {
 	}
 		
 	@POST
-	public void addAccount() {
-		
-		persistenceService.saveAccount();
-	//	return Response.created(null).status(Response.Status.CREATED).build();
+	@Path("register")
+	@Produces("application/json")
+	public void addAccount(Account account) {
+		//TODO TRY CATCH
+		persistenceService.saveAccount(account);
+	   // return Response.created(null).status(Response.Status.CREATED).build();
+		//return Response.ok().build();
 	}
 	
-	@POST
-	@Path("login1")
-    @Consumes(MediaType.APPLICATION_JSON)
-	public Response login12(@FormParam("accountname") String accountName, @FormParam("password") String password, @Context HttpHeaders headers ) {
-		System.out.println(accountName);
-		System.out.println(password);
-		if(!securityUtil.authenticateAccount(accountName, password)){
-			throw new SecurityException("Username or password is incorrect");
-		}
-		String token = getToken(accountName);
-		return Response.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + token).build();
-		//applicationState.se
-	}
+//	@POST
+//	@Path("login1")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//	public Response login12(@FormParam("accountname") String accountName, @FormParam("password") String password, @Context HttpHeaders headers ) {
+//		System.out.println(accountName);
+//		System.out.println(password);
+//		if(!securityUtil.authenticateAccount(accountName, password)){
+//			throw new SecurityException("Username or password is incorrect");
+//		}
+//		String token = getToken(accountName);
+//		return Response.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + token).build();
+//		//applicationState.se
+//	}
 	
 	@POST
-	@Path("loginTest")
+	@Path("login")
     @Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response login(Account account ) {
-		System.out.println("Testing here");
-		
+	
 		if(!securityUtil.authenticateAccount(account.getAccountName(), account.getPassword())){
 			throw new SecurityException("Username or password is incorrect");
 		}

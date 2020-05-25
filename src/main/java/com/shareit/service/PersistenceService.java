@@ -20,10 +20,9 @@ public class PersistenceService {
 	@Inject
     SecurityUtil securityUtil;
 	
-	public void saveAccount() {
-		Account account = new Account();
-		account.setAccountName("Test123");
-		account.setPassword("bob21185123");
+	public void saveAccount(Account account) {
+		account.setAccountName(account.getAccountName());
+		account.setPassword(account.getPassword());
 		Map<String, String>credMap = securityUtil.hashPassword(account.getPassword());
 		account.setPassword(credMap.get("hashedPassword"));
 		account.setSalt(credMap.get("salt"));

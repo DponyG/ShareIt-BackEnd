@@ -1,6 +1,7 @@
 package com.shareit.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,7 @@ public class Account {
 	protected User user;
 
 	@NotNull
+	@Column(unique= true)
 	protected String accountName;
 
 	//@NotEmpty(message = "Email must be set")

@@ -13,7 +13,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 		<properties>		
 			<property
 				name="javax.persistence.schema-generation.database.action"
-				value="create-table" />
+				value="drop-and-create" />
 		</properties>
 
 	</persistence-unit>
