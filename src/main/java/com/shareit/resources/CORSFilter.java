@@ -8,6 +8,11 @@ import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 
+/**
+ * Class is currently overridden by the web.xml. Not being used.
+ * @author dpony
+ *
+ */
 @Provider
 public class CORSFilter implements ContainerResponseFilter {
 

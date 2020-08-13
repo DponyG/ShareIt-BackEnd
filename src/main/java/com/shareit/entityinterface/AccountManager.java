@@ -12,8 +12,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.shareit.entity.Account;
 import com.shareit.entity.User;
+import com.shareit.entity.jpa.JpaAccount;
 
 @Stateful
 public class AccountManager {
@@ -26,7 +26,7 @@ public class AccountManager {
 	}
 	
 	public void addUser(String name) {
-		Account account = new Account();
+		JpaAccount account = new JpaAccount();
 		User user = new User();
 		user.setAccount(account);
 		account.setAccountName(name);
@@ -41,15 +41,15 @@ public class AccountManager {
 //		return (query.getMaxResults() == 1);
 //	}
 	
-	public Collection<Account> getAllUsers() {
-		TypedQuery<Account> allUsers = em.createNamedQuery(Account.FIND_ALL, Account.class);
+	public Collection<JpaAccount> getAllUsers() {
+		TypedQuery<JpaAccount> allUsers = em.createNamedQuery(JpaAccount.FIND_ALL, JpaAccount.class);
 		return allUsers.getResultList();
 	}
 	
-	public Collection<Account>getAllUsersFromCriteria(){
+	public Collection<JpaAccount>getAllUsersFromCriteria(){
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Account> cq = cb.createQuery(Account.class);
-		Root<Account> user = cq.from(Account.class);
+		CriteriaQuery<JpaAccount> cq = cb.createQuery(JpaAccount.class);
+		Root<JpaAccount> user = cq.from(JpaAccount.class);
 		cq.select(user);
 		return em.createQuery(cq).getResultList();
 	}

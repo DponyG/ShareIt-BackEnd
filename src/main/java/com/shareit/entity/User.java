@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.shareit.entity.jpa.JpaAccount;
+
 @Entity
 public class User {
 	
@@ -14,7 +16,7 @@ public class User {
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    protected Account account;
+    protected JpaAccount account;
 
 	public Long getId() {
 		return id;
@@ -24,11 +26,11 @@ public class User {
 		this.id = id;
 	}
 
-	public Account getAccount() {
+	public JpaAccount getAccount() {
 		return account;
 	}
 
-	public void setAccount(Account account) {
+	public void setAccount(JpaAccount account) {
 		this.account = account;
 	}
 	

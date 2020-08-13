@@ -17,7 +17,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.shareit.entity.Account;
+import com.shareit.entity.jpa.JpaAccount;
 import com.shareit.entityinterface.AccountManager;
 
 
@@ -54,7 +54,7 @@ public class JPATest {
     
     @Test
     public void assertAllEmployee() {
-    	Collection<Account> allUsers = accountManager.getAllUsers();
+    	Collection<JpaAccount> allUsers = accountManager.getAllUsers();
     	System.out.println(allUsers.size());
     }
 
