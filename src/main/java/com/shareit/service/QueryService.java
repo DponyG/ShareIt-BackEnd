@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import com.shareit.entity.Account;
 import com.shareit.entity.jpa.JpaAccount;
 
 /**
@@ -52,8 +53,8 @@ public class QueryService {
 	 * @param account
 	 * @return
 	 */
-	public boolean doesAccountNameExist(JpaAccount account) {
-		Long accountCount = (Long) em.createNamedQuery(JpaAccount.FIND_USER_BY_CREDENTIALS_COUNT)
+	public boolean doesAccountNameExist(Account account) {
+		Long accountCount = (Long) em.createNamedQuery(account.getJpaAccountClass().FIND_USER_BY_CREDENTIALS_COUNT)
 				.setParameter("accountName", account.getAccountName().toLowerCase()).getSingleResult();
 		if (accountCount > 0) {
 			return true;

@@ -26,8 +26,5 @@ public interface AccountEntity extends DataEntity {
 
 	public void setEmail(String email);
 	
-	public static Class<JpaAccount> getDefaultEntityClass() {
-		return JpaAccount.class;
-	}
 	
 }

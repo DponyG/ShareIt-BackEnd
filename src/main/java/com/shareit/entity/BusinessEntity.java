@@ -3,6 +3,8 @@ package com.shareit.entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.shareit.entity.iface.AccountEntity;
+
 
 public class BusinessEntity<D> {
 	

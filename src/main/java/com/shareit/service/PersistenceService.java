@@ -18,6 +18,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
+import com.shareit.entity.Account;
 import com.shareit.entity.jpa.JpaAccount;
 
 @Stateless
@@ -36,17 +37,12 @@ public class PersistenceService {
 	 * hashed and given the salt through securityUtils.
 	 * @param account
 	 */
-	public void saveAccount(JpaAccount account) {
+	public void saveAccount(Account account) {
 		account.setAccountName(account.getAccountName());
 		account.setPassword(account.getPassword());
 		Map<String, String> credMap = securityUtil.hashPassword(account.getPassword());
 		account.setPassword(credMap.get("hashedPassword"));
 		account.setSalt(credMap.get("salt"));
-		if (account.getId() == null) {
-			em.persist(account);
-		} else {
-			em.merge(account);
-		}
 		credMap = null;
 		em.persist(account);
 	}

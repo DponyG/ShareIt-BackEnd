@@ -1,45 +1,52 @@
 package com.shareit.entity;
+
 import com.shareit.entity.iface.AccountEntity;
 import com.shareit.entity.jpa.JpaAccount;
 
 public class Account extends BusinessEntity<AccountEntity> {
-	String accountName = "";
-	String password = "";
-	
+
 	public Account() {
-		
+
 	}
-	
-	@Override
-	public void save() {
-		
-	}
-	
+
 	public AccountEntity getAccountEntity() {
-		AccountEntity entity = (AccountEntity)getDataEntity();
-		if (entity==null) {
-			//This will eventually change when implemting xml criteria.
+		AccountEntity entity = getDataEntity();
+		if (entity == null) {
+			// This will eventually change when implemting xml criteria.
 			entity = new JpaAccount();
-			setDataEntity(entity);                  
-        }
-        return entity;
+			setDataEntity(entity);
+		}
+		return entity;
 	}
-	
+
 	public void setAccountName(String name) {
-		this.accountName = name;
+		AccountEntity entity = getDataEntity();
+		entity.setAccountName(name);
 	}
-	
+
 	public void setPassword(String password) {
-		this.password = password;
+		AccountEntity entity = getDataEntity();
+		entity.setPassword(password);
 	}
-	
+
+	public void setSalt(String salt) {
+		AccountEntity entity = getDataEntity();
+		entity.setSalt(salt);
+	}
+
 	public String getAccountName() {
-		return accountName;
+		AccountEntity entity = getDataEntity();
+		return entity.getAccountName();
 	}
 
 	public String getPassword() {
-		return password;
+		AccountEntity entity = getDataEntity();
+		return entity.getPassword();
 	}
-	
+
+	@Override
+	public void save() {
+
+	}
 
 }
